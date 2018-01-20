@@ -1,0 +1,55 @@
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+#all{
+    width:90%;
+    border: solid;
+    height: 600px;
+    background-color:#f4e9d4;
+    margin: auto;
+    border-radius: 1%;
+}
+
+#mainSection{
+    width:42%;
+    padding:2%;
+    float: left;
+}
+
+input{
+    width:50%;
+}
+
+button{
+    border-radius: 20%;
+    height: 2em;
+    background-color: #4e4f51;
+    font-weight: bold;
+    color:white;
+}
+
+#instructions{
+    height: 300px;
+    padding:2%;
+    width:48%;
+    float: left;
+    font-size: 1.1em;
+    background-color: hsl(44, 9%, 75%);
+    border: solid;
+    border-radius: 3%;
+}
+
+#footer{
+    clear: both;
+    padding-top: 6%;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.6em;
+}
+li{
+    font-weight: bold;
+}
