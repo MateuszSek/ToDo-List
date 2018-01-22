@@ -11,16 +11,21 @@
     <div id='all'>
         <h1>To Do List</h1>
         <div id="mainSection">
-            <span>Dopisz nowe zadanie:</span><input id="new_item" type="text"><button id="add">Dodaj</button>
-            <ol id='ul1'>
-                <li class="ui-state-default">Poćwiczyć pisanie stronek</li>
-                <li class="ui-state-default">Siatkówka trening</li>
-                <li class="ui-state-default">Impreza u Pauli, 19.00</li>
-            </ol>
-            <button id='deletion'>Usuń wykonane zadania</button>
+            <span>Dopisz nowe zadanie:</span><input id="new_item" type="text"><button id="add" class="mainButton">Dodaj</button>
+            <div id="listContainer">
+                <ol id='ul1'>
+                    <li class="ui-state-default">Poćwiczyć pisanie stronek</li>
+                    <li class="ui-state-default">Siatkówka trening</li>
+                    <li class="ui-state-default">Impreza u Pauli, 19.00</li>
+                </ol>
+            </div>
+            <button id='deletion' class="mainButton">Usuń zaznaczone zadania</button>
+            <button id="done" class="mainButton">Wykonaj zaznaczone zadania</button>
+            <button id="deleteDoneTasks" class="mainButton">Usuń wykonane zadania</button>
+
         </div>
         <div id='instructions'>
-            <span style="font-size:1.5em; font-weight:bold;">Witaj!</span><br><br>- By dodać zadanie, wpisz je w pole tekstowe i zatwiedź przyciskiem 'Dodaj' lub klawiszem ENTER.<br><br>- Aby oznaczyć zadanie jako wykonane, kliknij na nie podwójnie.<br><br>- Powtórne podwójne kliknięcie sprawia że zadanie powraca na listę jako aktywne.<br><br>- Możesz całkowicie usunąć z listy wykonane zadania, poprzez przycisk 'usuń' lub klawisz DELETE.<br><br>- Przenoś elementy między sobą, by nadać im odpowiedni priorytet!
+            <span style="font-size:1.5em; font-weight:bold;">Witaj!</span><br><br>- By dodać zadanie, wpisz je w pole tekstowe i zatwiedź przyciskiem 'Dodaj' lub klawiszem ENTER.<br><br>- By zarządzać zadaniami - wybierz je z listy klikając na nie podwójnie<br><br>- Powtórne podwójne kliknięcie to rezygnacja z wyboru zadania<br><br>- Po wyborze zadań, możesz zmienić ich status na 'Wykonane' lub usunąć je z listy<br><br>- Przenoś elementy między sobą, by nadać im odpowiedni priorytet!
         </div>
     <div id='footer'>Autor strony: Mateusz Sęk</div>
     </div>
