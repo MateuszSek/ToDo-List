@@ -4,7 +4,7 @@ body{
 #all{
     width:90%;
     border: solid;
-    height: 600px;
+    height: 670px;
     background-color:#f4e9d4;
     margin: auto;
     border-radius: 1%;
@@ -30,8 +30,9 @@ input{
 .mainButton{
     border-radius: 10%;
     height: 4em;
-    width: 27%;
-    margin-left: 3%;
+    width: 30%;
+    margin-left: 5%;
+    margin-bottom: 1%;
     background-color: #4e4f51;
     font-weight: bold;
     color:white;
