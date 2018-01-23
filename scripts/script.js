@@ -3,6 +3,7 @@ var doneItems=0; //to track if user did all his items
 var addItem = function(item){ 
     $("ol").prepend("<li style='font-weight:bold'>"+item.toString()+"</li>");
     $('input').val('');
+    $('input').attr("placeholder","Dodaj zadanie");
     numberOfItems+=1;
 }   
 
@@ -13,7 +14,7 @@ var main = function(){
     $(document).on('keypress', function(e){ //assigning keys ENTER and DELETE
         if (e.which==13){ //assigning ENTER to addItem function
             var newItem = $("#new_item").val();        
-            if ($('input').val()!='' && $('input').val()!='Najpierw wpisz zadanie!') addItem(newItem);
+            if ($('input').val()!='') addItem(newItem);
             else $('input').val('Najpierw wpisz zadanie!');
         }
         if (e.keyCode==46){
@@ -29,7 +30,7 @@ var main = function(){
         if ($('#add').html()=='Dodaj'){ //because there is also 'edit' option on a same button, I need to check if user wants to Add or Edit
             var newItem = $("#new_item").val();        
             if ($('input').val()!='' && $('input').val()!='Najpierw wpisz zadanie!') addItem(newItem);
-            else $('input').val('Najpierw wpisz zadanie!');
+            else $('input').attr('placeholder','Najpierw wpisz zadanie!');
         }
 
     });    
@@ -66,19 +67,22 @@ var main = function(){
         $('li').each(function() {if($(this).css("text-decoration")=="underline") itemsChose+=1;}) //checking if user chose 1 item to edit
         if (itemsChose!=1) $('input').val('Do edycji trzeba wybrać 1 zadanie!');
         else {
-            $('input').val('Tu wpisz nową treść zadania');
+            $('input').val('');
+            $('input').attr("placeholder","Tu wpisz nową treść zadania");
             $('#add').html('Zmień!'); //now button for Add becomes the button to Edit
             $("#add").on("click", function(){
-                if($('#add').html()=='Zmień!'){ //function will only trigger, if button is 'set' to edit
+                if($('#add').html()=='Zmień!' && $('input').val()!=''){ //function will only trigger, if button is 'set' to edit + field is not empty
                     var word=$("#new_item").val();
                     $('li').each(function() {if($(this).css("text-decoration")=="underline") { //selecting the exact item that user chose
                         $(this).html(word);
                         $(this).css({"text-decoration":"none","font-weight":"bold", "color":"black"});
                         }});
                     $('#add').html('Dodaj'); //now button to Edit becomes again the button to Add
+                    $('input').attr("placeholder","Dodaj zadanie");
                     $('input').val('');
                 }
             });
+
         };
     });
 
@@ -93,4 +97,3 @@ var main = function(){
 
 }
 $(document).ready(main);
-
