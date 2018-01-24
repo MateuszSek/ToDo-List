@@ -1,7 +1,7 @@
 var numberOfItems = 3; //start number of items
 var doneItems=0; //to track if user did all his items
 var addItem = function(item){ 
-    $("ol").prepend("<li style='font-weight:bold'>"+item.toString()+"</li>");
+    $("ol").prepend("<li style='font-weight:bold'>"+item.toString()+" <button class='editTask'>Edytuj</button></li>");
     $('input').val('');
     $('input').attr("placeholder","Dodaj zadanie");
     numberOfItems+=1;
@@ -27,12 +27,9 @@ var main = function(){
     })
 
     $("#add").on("click", function(){  //assigning Add button to addItem function
-        if ($('#add').html()=='Dodaj'){ //because there is also 'edit' option on a same button, I need to check if user wants to Add or Edit
             var newItem = $("#new_item").val();        
             if ($('input').val()!='' && $('input').val()!='Najpierw wpisz zadanie!') addItem(newItem);
             else $('input').attr('placeholder','Najpierw wpisz zadanie!');
-        }
-
     });    
 
     $('#deletion').on('click',function(){ //assigning remove button to remove function
@@ -62,29 +59,17 @@ var main = function(){
         })
     });
 
-    $('#editTask').on('click', function(){
-        var itemsChose=0;
-        $('li').each(function() {if($(this).css("text-decoration")=="underline") itemsChose+=1;}) //checking if user chose 1 item to edit
-        if (itemsChose!=1) $('input').val('Do edycji trzeba wybrać 1 zadanie!');
-        else {
-            $('input').val('');
-            $('input').attr("placeholder","Tu wpisz nową treść zadania");
-            $('#add').html('Zmień!'); //now button for Add becomes the button to Edit
-            $("#add").on("click", function(){
-                if($('#add').html()=='Zmień!' && $('input').val()!=''){ //function will only trigger, if button is 'set' to edit + field is not empty
-                    var word=$("#new_item").val();
-                    $('li').each(function() {if($(this).css("text-decoration")=="underline") { //selecting the exact item that user chose
-                        $(this).html(word);
-                        $(this).css({"text-decoration":"none","font-weight":"bold", "color":"black"});
-                        }});
-                    $('#add').html('Dodaj'); //now button to Edit becomes again the button to Add
-                    $('input').attr("placeholder","Dodaj zadanie");
-                    $('input').val('');
-                }
-            });
+    $(document).on('click','.editTask', function(){
+        if ($(this).html()=="Edytuj") {
+            $(this).parent().html('<input id="ed_input" type="text" placeholder="Wpisz nowe zadanie"><button class="editTask">Zatwierdź!</button>');
+        }
 
-        };
+        if ($(this).html()=="Zatwierdź!"){
+            var editedItem = $('#ed_input').val();
+            $(this).parent().html(editedItem+' <button class="editTask">Edytuj</button>');
+        }
     });
+
 
     $('ol').on('dblclick','li', function(){ //choosing tasks that will be managed
         if ($(this).css("text-decoration")=="underline") {
