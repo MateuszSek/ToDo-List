@@ -59,15 +59,12 @@ var main = function(){
         })
     });
 
-    $(document).on('click','.editTask', function(){
-        if ($(this).html()=="Edytuj") {
-            $(this).parent().html('<input id="ed_input" type="text" placeholder="Wpisz nowe zadanie"><button class="editTask">Zatwierdź!</button>');
-        }
-
-        if ($(this).html()=="Zatwierdź!"){
+    $('#listContainer').on('click','.editTask', function(){
+            $(this).parent().html('<input id="ed_input" type="text" placeholder="Wpisz nowe zadanie"><button class="confirmTask">Zatwierdź!</button>');
+    });
+    $('#listContainer').on('click','.confirmTask', function(){
             var editedItem = $('#ed_input').val();
             $(this).parent().html(editedItem+' <button class="editTask">Edytuj</button>');
-        }
     });
 
 
